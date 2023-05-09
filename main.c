@@ -66,7 +66,6 @@ int main(int argc, char *argv[]) {
         printf("Usage: %s duration image_path x_position y_position\n", argv[0]);
         return EXIT_FAILURE;
     }
-	
     // Convert duration argument to milliseconds
     int duration = atoi(argv[1]) * 1000;
 
@@ -114,16 +113,6 @@ int main(int argc, char *argv[]) {
 
     // Create a temporary surface to flip the image
     SDL_Surface* flipped_image = SDL_CreateRGBSurface(image->flags, image->w, image->h, bpp, image->format->Rmask, image->format->Gmask, image->format->Bmask, image->format->Amask);
-
-    // Flip the image vertically
-    for (int y = 0; y < image->h / 2; y++) {
-        for (int x = 0; x < image->w; x++) {
-            Uint32 top_pixel = get_pixel(image, x, y);
-            Uint32 bottom_pixel = get_pixel(image, x, image->h - y - 1);
-            put_pixel(image, x, y, bottom_pixel);
-            put_pixel(image, x, image->h - y - 1, top_pixel);
-        }
-    }
 	
 	// Get x and y positions from command line arguments
     int x_position = atoi(argv[3]);
