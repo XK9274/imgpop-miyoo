@@ -6,6 +6,8 @@ Aliasing around edges
 Flickers due to MainUI redraw
 
 # Usage 
-./imgpop 5 /mnt/SDCARD/miyoo/app/skin/icon-wifi-signal-04.png 290 420 > /dev/null 2>&1
+`./imgpop 5 /mnt/SDCARD/miyoo/app/skin/icon-wifi-signal-04.png 290 420 > /dev/null 2>&1`
 
-Syntax: ./imgpop duration image_path x_position y_position
+`Syntax: ./imgpop duration image_path x_position y_position`
+
+![MainUI_008](https://user-images.githubusercontent.com/47260768/236965163-06aa8ca1-0a30-4d51-a70e-8e89ad389327.png)
