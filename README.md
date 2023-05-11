@@ -2,7 +2,7 @@
 A tool for popping up an image at any given location on the screen on the MMP
 
 # Issues
-- Aliasing around edges
+~- Aliasing around edges~
 - Flickers due to MainUI redraw
 
 # Usage 
