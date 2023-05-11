@@ -10,4 +10,5 @@ A tool for popping up an image at any given location on the screen on the MMP
 
 `Syntax: ./imgpop duration image_path x_position y_position`
 
-![MainUI_008](https://user-images.githubusercontent.com/47260768/236965163-06aa8ca1-0a30-4d51-a70e-8e89ad389327.png)
+![MainUI_016](https://github.com/XK9274/imgpop-miyoo/assets/47260768/e7e65a1a-0e9c-45c0-8d07-214e1a1d79b9)
+
