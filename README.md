@@ -1,7 +1,7 @@
 # imgpop-miyoo
 A tool for popping up an image at any given location on the screen on the MMP
 
-Based on the say command by Shauninman - https://github.com/shauninman/MiniUI
+Based on the say package by Shauninman - https://github.com/shauninman/MiniUI
 
 # Issues
 ~- Aliasing around edges~
