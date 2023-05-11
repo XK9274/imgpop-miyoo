@@ -3,7 +3,7 @@ A tool for popping up an image at any given location on the screen on the MMP
 
 # Issues
 ~- Aliasing around edges~
-- Flickers due to MainUI redraw
+- Flickers on main menu due to MainUI redraw
 
 # Usage 
 `./imgpop 5 "/mnt/SDCARD/Themes/Silky by DiMo/skin/miyoo-topbar.png" 220 420 > /dev/null 2>&1 &`
