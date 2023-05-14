@@ -12,7 +12,7 @@ Based on the say package by Shauninman - https://github.com/shauninman/MiniUI
 - Flickers on main menu due to MainUI redraw
 
 # Usage 
-`./imgpop 5 "/mnt/SDCARD/Themes/Silky by DiMo/skin/miyoo-topbar.png" 220 420 > /dev/null 2>&1 &`
+`./imgpop 5 "/mnt/SDCARD/Themes/Silky by DiMo/skin/miyoo-topbar.png" 220 420 50 > /dev/null 2>&1 &`
 
 `Syntax: ./imgpop duration image_path x_position y_position resize_percentage`
 
