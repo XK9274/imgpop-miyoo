@@ -9,8 +9,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
-
 int main(int argc, char *argv[]) {
     if (argc != 7) {
         printf("Usage: %s duration delay image_path x_position y_position resize_percentage\n", argv[0]);
@@ -85,9 +83,8 @@ int main(int argc, char *argv[]) {
 
     Uint32 start_time = SDL_GetTicks();
     Uint32 elapsed_time = 0;
-    Uint32 total_duration = duration + delay;
 
-    while (elapsed_time < total_duration) {
+    while (elapsed_time < duration) {
         SDL_BlitSurface(image, NULL, screen, &dst_rect);
         SDL_Flip(screen);
         elapsed_time = SDL_GetTicks() - start_time;
