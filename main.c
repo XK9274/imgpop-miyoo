@@ -47,25 +47,22 @@ int main(int argc, char *argv[]) {
     SDL_Surface* screen = SDL_CreateRGBSurfaceFrom(fb0_map, width, height, bpp, pitch, 0, 0, 0, 0);
 
     int resize_percentage = atoi(argv[5]);
-    int target_width = width * resize_percentage / 100;
-    int target_height = height * resize_percentage / 100;
 
-    SDL_Surface* image = IMG_Load(argv[2]);
-    if (!image) {
-        printf("Error: Unable to load image: %s\n", SDL_GetError());
-        return EXIT_FAILURE;
-    }
+	SDL_Surface* image = IMG_Load(argv[2]);
+	if (!image) {
+		printf("Error: Unable to load image: %s\n", SDL_GetError());
+		return EXIT_FAILURE;
+	}
 
-    double width_ratio = (double)target_width / image->w;
-    double height_ratio = (double)target_height / image->h;
-    double resize_ratio = (width_ratio < height_ratio) ? width_ratio : height_ratio;
+	double resize_ratio = resize_percentage / 100.0;
 
-    int resized_width = image->w * resize_ratio;
-    int resized_height = image->h * resize_ratio;
+	int resized_width = image->w * resize_ratio;
+	int resized_height = image->h * resize_ratio;
 
-   SDL_Surface* resized_image = zoomSurface(image, resize_ratio, resize_ratio, 1);
-    SDL_FreeSurface(image);
-    image = resized_image;
+	SDL_Surface* resized_image = zoomSurface(image, resize_ratio, resize_ratio, 1);
+	SDL_FreeSurface(image);
+	image = resized_image;
+
 
     // Rotate the image
     double angle = 180.0;
