@@ -5,6 +5,7 @@ Based on the say package by Shauninman - https://github.com/shauninman/MiniUI
 
 # Changes
 - Fixed aliasing
+- Added scaling option
 
 # Issues
 ~- Aliasing around edges~
