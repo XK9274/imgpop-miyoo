@@ -5,7 +5,6 @@ Based on the say package by Shauninman - https://github.com/shauninman/MiniUI
 
 # Changes
 - Fixed aliasing
-- Added scaling arg
 - Added delay arg
 
 # Issues
@@ -13,9 +12,9 @@ Based on the say package by Shauninman - https://github.com/shauninman/MiniUI
 - Flickers on main menu due to MainUI redraw
 
 # Usage 
-`./imgpop 5 5 "/mnt/SDCARD/Themes/Silky by DiMo/skin/miyoo-topbar.png" 220 420 100 > /dev/null 2>&1 &`
+`./imgpop 5 5 "/mnt/SDCARD/Themes/Silky by DiMo/skin/miyoo-topbar.png" 220 420 > /dev/null 2>&1 &`
 
-`Syntax: ./imgpop duration delay image_path x_position y_position resize_percentage`
+`Syntax: ./imgpop duration delay image_path x_position y_position`
 
 ![MainUI_019](https://github.com/XK9274/imgpop-miyoo/assets/47260768/05ced503-caef-47b3-860c-4b9c462be61a)
 
