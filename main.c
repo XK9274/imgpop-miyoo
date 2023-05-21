@@ -10,8 +10,8 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]) {
-    if (argc != 7) {
-        printf("Usage: %s duration delay image_path x_position y_position resize_percentage\n", argv[0]);
+    if (argc != 6) {
+        printf("Usage: %s duration delay image_path x_position y_position\n", argv[0]);
         return EXIT_FAILURE;
     }
 
@@ -46,22 +46,11 @@ int main(int argc, char *argv[]) {
     void* fb0_map = mmap(NULL, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, fb_fd, 0);
     SDL_Surface* screen = SDL_CreateRGBSurfaceFrom(fb0_map, width, height, bpp, pitch, 0, 0, 0, 0);
 
-    int resize_percentage = atoi(argv[6]);
-
 	SDL_Surface* image = IMG_Load(argv[3]);
 	if (!image) {
 		printf("Error: Unable to load image: %s\n", SDL_GetError());
 		return EXIT_FAILURE;
 	}
-
-	double resize_ratio = resize_percentage / 100.0;
-
-	int resized_width = image->w * resize_ratio;
-	int resized_height = image->h * resize_ratio;
-
-	SDL_Surface* resized_image = zoomSurface(image, resize_ratio, resize_ratio, 1);
-	SDL_FreeSurface(image);
-	image = resized_image;
 
     // Rotate the image
     double angle = 180.0;
@@ -75,8 +64,8 @@ int main(int argc, char *argv[]) {
     SDL_Rect dst_rect = {
         .x = x_position,
         .y = y_position,
-        .w = resized_width,
-        .h = resized_height
+        .w = image->w,
+        .h = image->h
     };
 	
 	SDL_Delay(delay);
