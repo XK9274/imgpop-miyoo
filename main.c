@@ -12,18 +12,20 @@
 
 
 int main(int argc, char *argv[]) {
-    if (argc != 6) {
-        printf("Usage: %s duration image_path x_position y_position resize_percentage\n", argv[0]);
+    if (argc != 7) {
+        printf("Usage: %s duration delay image_path x_position y_position resize_percentage\n", argv[0]);
         return EXIT_FAILURE;
     }
 
     int duration = atoi(argv[1]) * 1000;
+    int delay = atoi(argv[2]) * 1000;
 
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         printf("Error: Unable to initialize SDL: %s\n", SDL_GetError());
         return EXIT_FAILURE;
     }
     atexit(SDL_Quit);
+
 
     int fb_fd = open("/dev/fb0", O_RDWR);
     if (fb_fd == -1) {
@@ -46,9 +48,9 @@ int main(int argc, char *argv[]) {
     void* fb0_map = mmap(NULL, map_size, PROT_READ | PROT_WRITE, MAP_SHARED, fb_fd, 0);
     SDL_Surface* screen = SDL_CreateRGBSurfaceFrom(fb0_map, width, height, bpp, pitch, 0, 0, 0, 0);
 
-    int resize_percentage = atoi(argv[5]);
+    int resize_percentage = atoi(argv[6]);
 
-	SDL_Surface* image = IMG_Load(argv[2]);
+	SDL_Surface* image = IMG_Load(argv[3]);
 	if (!image) {
 		printf("Error: Unable to load image: %s\n", SDL_GetError());
 		return EXIT_FAILURE;
@@ -63,15 +65,14 @@ int main(int argc, char *argv[]) {
 	SDL_FreeSurface(image);
 	image = resized_image;
 
-
     // Rotate the image
     double angle = 180.0;
     SDL_Surface* rotated_image = rotozoomSurface(image, angle, 1.0, 1);
     SDL_FreeSurface(image);
     image = rotated_image;
 
-    int x_position = atoi(argv[3]);
-    int y_position = atoi(argv[4]);
+    int x_position = atoi(argv[4]);
+    int y_position = atoi(argv[5]);
 
     SDL_Rect dst_rect = {
         .x = x_position,
@@ -79,11 +80,14 @@ int main(int argc, char *argv[]) {
         .w = resized_width,
         .h = resized_height
     };
+	
+	SDL_Delay(delay);
 
     Uint32 start_time = SDL_GetTicks();
     Uint32 elapsed_time = 0;
+    Uint32 total_duration = duration + delay;
 
-    while (elapsed_time < duration) {
+    while (elapsed_time < total_duration) {
         SDL_BlitSurface(image, NULL, screen, &dst_rect);
         SDL_Flip(screen);
         elapsed_time = SDL_GetTicks() - start_time;
